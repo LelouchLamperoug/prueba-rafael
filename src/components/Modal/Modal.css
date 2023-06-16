@@ -1,0 +1,71 @@
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal {
+    width: 90%;
+    height: 90%;
+    position: absolute;
+    background-color: #fff;
+    padding: 20px;
+}
+
+.upper-section {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.modal-content {
+    height: 50%;
+    display: flex;
+}
+
+.modal-upper-content {
+    height: 50%;
+}
+
+.close {
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.image{
+    margin: auto;
+    width: 100px;
+    height: 50px;
+}
+
+.channels-name {
+    height: 100%;
+    width: 30%;
+    overflow-y: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.channels-name::-webkit-scrollbar {
+    display: none;
+}
+
+
+.channel-row {
+    display: grid;
+    justify-content: center;
+    text-align: center;
+    background-color: gray;
+    border: 1px solid white;
+    min-height: 80px;
+}
+
+.schedule {
+    height: 100%;
+    width: 70%;
+}
