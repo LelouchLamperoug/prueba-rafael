@@ -94,7 +94,7 @@
 }
 
 .schedule {
-    height: 100%;
+    height: fit-content;
     width: 70%;
 }
 
