@@ -24,12 +24,25 @@
 }
 
 .modal-content {
-    height: 50%;
+    height: 100%;
     display: flex;
+    overflow-y: auto;
+}
+
+.modal-timerange {
+    margin-left: auto;
+    margin-right: 0;
+    width: 70%;
 }
 
 .modal-upper-content {
     height: 50%;
+}
+
+.modal-lower-content {
+    height: 50%;
+    overflow-x: auto;
+    overflow-y: hidden;
 }
 
 .close {
@@ -37,7 +50,7 @@
     cursor: pointer;
 }
 
-.image{
+.image {
     margin: auto;
     width: 100px;
     height: 50px;
@@ -45,11 +58,25 @@
 
 .channels-name {
     height: 100%;
+    position: sticky;
+    left: 0px;
+    z-index: 3;
     width: 30%;
-    overflow-y: auto;
+    /* overflow-y: auto;
     -ms-overflow-style: none;
-    scrollbar-width: none;
+    scrollbar-width: none; */
 }
+
+.channel-header{
+    text-align: center;
+    position: sticky;
+    left: 0px;
+    z-index: 3;
+    background-color: gray;
+    border: 1px solid white;
+}
+
+
 
 .channels-name::-webkit-scrollbar {
     display: none;
@@ -69,3 +96,32 @@
     height: 100%;
     width: 70%;
 }
+
+.time-range-row {
+    display: flex;
+    background-color: aqua;
+    border: 1px solid white;
+    position: sticky;
+    top: 0px;
+    z-index: 1;
+    width: fit-content;
+    height: fit-content;
+}
+
+.time-row {
+    min-width: 60px;
+}
+
+.programs-row{
+}
+.program{
+    background-color: rgb(171, 140, 140);
+    border: 1px solid white;
+    min-height: 80px;
+    min-width: 60px;
+    max-height: 80px;
+    max-width: 60px;
+}
+
+
+
