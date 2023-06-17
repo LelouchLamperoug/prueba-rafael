@@ -110,10 +110,11 @@
 }
 
 .time-row {
-    min-width: 60px;
+    min-width: 130px;
 }
 
 .programs-row{
+    display: flex;
 }
 .program{
     background-color: rgb(171, 140, 140);
