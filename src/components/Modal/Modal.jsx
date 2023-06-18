@@ -1,23 +1,25 @@
-import React, { useState } from 'react'
+import React, { useMemo, useState } from 'react'
+import { timeRanges, calculateWidth, formatTimeRange } from '../../utils';
 import './Modal.css'
 
 const Modal = ({ data, isOpen, onClose }) => {
     const [hoveredItem, setHoveredItem] = useState(null);
 
-    const handleMouseEnter = (itemName) => setHoveredItem(itemName);
+    const handleMouseEnter = (itemName) => setHoveredItem(itemName)
     const handleMouseLeave = () => setHoveredItem(null);
 
-    const timeRanges = ['20:00', '21:00', '22:00', '23:00', '00:00', '01:00', '02:00', '03:00', '04:00', '05:00', '06:00', '07:00', '08:00', '09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00'];
+    const dataTransformed = useMemo(() => {
+        return data.map(channel => ({
+            ...channel,
+            events: channel.events.map(program => ({
+                ...program,
+                minWidth: calculateWidth(program.duration),
+                timeRange: formatTimeRange(program.date_begin, program.date_end)
+            }))
+        }))
+    }, [data])
+
     if (!isOpen) return null;
-
-
-    const calculateWidth = (duration) => {
-        const [hours, minutes, seconds] = duration.split(':');
-        const totalMinutes = parseInt(hours) * 60 + parseInt(minutes) + parseInt(seconds) / 60;
-        const pixelsPerMinute = 130 / 60;
-        const width = totalMinutes * pixelsPerMinute;
-        return `${width}px`;
-    };
 
     return (
         <div className="modal-overlay">
@@ -26,7 +28,11 @@ const Modal = ({ data, isOpen, onClose }) => {
                     <div className='upper-section'>
                         <span className="close" onClick={onClose}>&times;</span>
                     </div>
-                    <h2>{hoveredItem ? hoveredItem.name : ''}</h2>
+                    <div className='header-text'>
+                        <span>EPG Schedule</span>
+                    </div>
+                    <h3>{hoveredItem ? hoveredItem.name : ''}</h3>
+                    <span>{hoveredItem ? hoveredItem.timeRange : ''}</span>
                     <span>{hoveredItem ? hoveredItem.description : ''}</span>
                 </div>
                 <div className='modal-lower-content'>
@@ -42,14 +48,13 @@ const Modal = ({ data, isOpen, onClose }) => {
                                 {timeRanges.map((time) => { return <div key={time} className='time-row'>{time}</div> })}
                             </div>
                             <div>
-                                {data.map((channel, index) => {
-                                    return <div key={index} className='programs-row'>{channel.events.map((program, index) => {
-                                        return <div className='program' style={{ minWidth: calculateWidth(program.duration) }} key={index}
-                                            onMouseEnter={() => handleMouseEnter(program)}
-                                            onMouseLeave={handleMouseLeave}>{program.name}
+                                {dataTransformed.map((channel, index) => (
+                                    <div key={index} className='programs-row'>{channel.events.map((program, index) => (
+                                        <div className='program' style={{ minWidth: program.minWidth }} key={index} onMouseEnter={() => handleMouseEnter(program)} onMouseLeave={handleMouseLeave}>
+                                            <span className='timerange'>{program.name}<br />{program.timeRange}</span>
                                         </div>
-                                    })}</div>
-                                })}
+                                    ))}</div>
+                                ))}
                             </div>
                         </div>
                     </div>
