@@ -14,8 +14,25 @@
     width: 90%;
     height: 90%;
     position: absolute;
-    background-color: #fff;
+    color: rgba(245, 245, 245, 0.736);
+    background: linear-gradient(to right, hsl(210, 30%, 20%), hsl(255, 30%, 25%));
+    box-shadow: hsla(236, 50%, 50%, .3) .4rem .4rem 10.2rem .2rem hsla(236, 50%, 50%, .4);
     padding: 20px;
+    border-radius: 10px;
+    animation-name: modal-open-animation;
+    animation-duration: 0.5s;
+}
+
+@keyframes modal-open-animation {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .upper-section {
@@ -62,18 +79,15 @@
     left: 0px;
     z-index: 3;
     width: 30%;
-    /* overflow-y: auto;
-    -ms-overflow-style: none;
-    scrollbar-width: none; */
 }
 
-.channel-header{
+.channel-header {
     text-align: center;
     position: sticky;
     left: 0px;
     z-index: 3;
-    background-color: gray;
-    border: 1px solid white;
+    background-color: #19191c;
+    border-radius: 10px 10px 0px 0px;
 }
 
 
@@ -88,8 +102,8 @@
     justify-content: center;
     font-size: 12px;
     text-align: center;
-    background-color: gray;
-    border: 1px solid white;
+    background-color: #18181B;
+    border: 1px solid whitesmoke;
     min-height: 80px;
 }
 
@@ -100,8 +114,7 @@
 
 .time-range-row {
     display: flex;
-    background-color: aqua;
-    border: 1px solid white;
+    background: linear-gradient(to right, hsl(223, 29%, 22%), hsl(255, 30%, 25%));
     position: sticky;
     top: 0px;
     z-index: 1;
@@ -110,15 +123,31 @@
 }
 
 .time-row {
+    color: white;
     min-width: 130px;
 }
 
-.programs-row{
+.header-text {
+    text-align: center;
+    font-size: 32px;
+    font-weight: bold;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.programs-row {
     display: flex;
 }
-.program{
-    background-color: rgb(171, 140, 140);
-    border: 1px solid white;
+
+.program {
+    background-color: rgba(255, 255, 255, .015);
+    border-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid;
     min-height: 80px;
     max-height: 80px;
+}
+
+.timerange {
+    color: white;
+    display: grid;
+    font-size: 12px;
 }
