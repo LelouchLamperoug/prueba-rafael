@@ -41,11 +41,11 @@ const Modal = ({ data, isOpen, onClose }) => {
                             <div className='channel-header'>
                                 <span>HOY</span>
                             </div>
-                            {data.map((channel, index) => {<div key={index} className='channel-row'><img className='image' alt='tv-logo' src={channel.image} /><span>{channel.name}</span></div> })}
+                            {data.map((channel, index) => (<div key={index} className='channel-row'><img className='image' alt='tv-logo' src={channel.image} /><span>{channel.name}</span></div> ))}
                         </div>
                         <div className='schedule'>
                             <div className='time-range-row'>
-                                {timeRanges.map((time) => {<div key={time} className='time-row'>{time}</div> })}
+                                {timeRanges.map((time) => (<div key={time} className='time-row'>{time}</div> ))}
                             </div>
                             <div>
                                 {dataTransformed.map((channel, index) => (
