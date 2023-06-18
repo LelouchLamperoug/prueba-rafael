@@ -22,18 +22,18 @@ const Modal = ({ data, isOpen, onClose }) => {
     if (!isOpen) return null;
 
     return (
-        <div className="modal-overlay">
+        <div data-testid="modal-overlay" className="modal-overlay">
             <div className="modal">
                 <div className="modal-upper-content">
                     <div className='upper-section'>
-                        <span className="close" onClick={onClose}>&times;</span>
+                        <span data-testid="close-button" className="close" onClick={onClose}>&times;</span>
                     </div>
                     <div className='header-text'>
                         <span>EPG Schedule</span>
                     </div>
-                    <h3>{hoveredItem ? hoveredItem.name : ''}</h3>
-                    <span>{hoveredItem ? hoveredItem.timeRange : ''}</span>
-                    <span>{hoveredItem ? hoveredItem.description : ''}</span>
+                    <h3 data-testid='hover-title'>{hoveredItem ? hoveredItem.name : ''}</h3>
+                    <span data-testid='hover-range'>{hoveredItem ? hoveredItem.timeRange : ''}</span>
+                    <span data-testid='hover-description'>{hoveredItem ? hoveredItem.description : ''}</span>
                 </div>
                 <div className='modal-lower-content'>
                     <div className="modal-content">
@@ -51,7 +51,8 @@ const Modal = ({ data, isOpen, onClose }) => {
                                 {dataTransformed.map((channel, index) => (
                                     <div key={index} className='programs-row'>{channel.events.map((program, index) => (
                                         <div className='program' style={{ minWidth: program.minWidth }} key={index} onMouseEnter={() => handleMouseEnter(program)} onMouseLeave={handleMouseLeave}>
-                                            <span className='timerange'>{program.name}<br />{program.timeRange}</span>
+                                            <span title={program.name} className='timerange'>{program.name}</span>
+                                            <span className='timerange'>{program.timeRange}</span>
                                         </div>
                                     ))}</div>
                                 ))}
