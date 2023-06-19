@@ -6,7 +6,7 @@ import useFetch from "./hooks/useFetch";
 
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const { data } = useFetch(Endpoints.Channels);
+  const { data, isLoading } = useFetch(Endpoints.Channels);
   const handleOpenModal = () => setIsModalOpen(true);
   const handleCloseModal = () => setIsModalOpen(false);
 
@@ -17,7 +17,12 @@ function App() {
           Mostrar EPG
         </button>
       </div>
-      <Modal data={data} isOpen={isModalOpen} onClose={handleCloseModal} />
+      <Modal
+        data={data}
+        isOpen={isModalOpen}
+        onClose={handleCloseModal}
+        loading={isLoading}
+      />
     </div>
   );
 }
