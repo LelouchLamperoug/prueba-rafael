@@ -1,3 +1,7 @@
+:root{
+  --primary-bg: #19191c;
+}
+
 .App {
   width: 100vw;
   height: 100vh;

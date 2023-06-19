@@ -18,6 +18,7 @@ const useFetch = (endpoint) => {
       setFetchStatus((prev) => ({
         ...prev,
         data: fetchResult.response.channels,
+        isLoading: false,
       }));
     } catch (ex) {
       setFetchStatus((prev) => ({
